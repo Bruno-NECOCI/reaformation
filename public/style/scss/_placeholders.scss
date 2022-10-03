@@ -1,0 +1,43 @@
+@use './variable' as *;
+
+
+%flex-center-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+%flex-around-align{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+%flex-around{
+    display: flex;
+    justify-content: space-around;
+}
+%flex-around-align{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+%flex-bt{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+

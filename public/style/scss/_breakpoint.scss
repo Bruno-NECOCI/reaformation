@@ -1,0 +1,30 @@
+@use './_placeholders' as *;
+
+$breakpoints: (
+  "phone": 576px, 
+  "phoneLg": 820px,
+  "tablet": 992px,
+  "desktop": 1200px
+);
+
+
+@mixin phone{
+    @media (max-width: map-get($breakpoints, "phone")){
+        @content;
+    }
+}
+@mixin phoneLg{
+    @media (max-width: map-get($breakpoints, "phoneLg")){
+        @content;
+    }
+}
+@mixin tablet{
+    @media (max-width: map-get($breakpoints, "tablet")){
+        @content;
+    }
+}
+@mixin desktop{
+    @media (max-width: map-get($breakpoints, "desktop")){
+        @content;
+    }
+}

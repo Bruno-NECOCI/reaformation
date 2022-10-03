@@ -1,0 +1,1554 @@
+@use "../scss/"as *;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+:root {
+    font-size: 62.5%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {   
+    font-family: $main_font;
+}
+
+// ---------------------- Start Header ----------------------
+.btn-lien{
+    width: 10rem;
+    height: 4rem;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(180deg, $blue_light, $blue_light2);
+    color: $white;
+    box-shadow: $box-shadow_grey_dark;
+    cursor: pointer;
+}
+header {
+    height: 20vh;
+
+    .navbar{
+
+        display: flex;
+        background-color: #ecf0f3;
+        height:100%;
+        width: auto;
+        .navbar__logo {
+            flex: 1;
+            @extend %flex-center-align;
+            font-size: 4rem;
+            color: $blue_punchy;
+            p{
+                padding-left: 1rem;
+            }
+            @include tablet{
+                display:none;
+            }
+        }.navbar__logo_resp{
+            flex: 1;
+            @extend %flex-center-align;
+            font-size: 4rem;
+            color: $blue_punchy;
+            display:none;
+            @include tablet{
+                display:flex;
+            }
+        }
+        .navbar__main {
+            flex: 3;
+            @extend %flex-around-align;
+                #open{
+                    display:none;
+                    &:checked + .navbar__menu {
+                        max-height: 100%;
+                        transition: max-height 1s;
+                        z-index: 5;
+                    }
+                }
+                label{
+                    cursor:pointer;
+                    font-size:3rem;
+                    color:$blue_punchy;
+                    display:none;
+                    @include tablet{
+                        display:inline-block;
+                    }
+                }
+            .navbar__menu{
+                width: 100%;
+                @extend %flex-around-align;
+                list-style: none;
+                @include tablet{
+                    overflow:hidden;
+                    flex-direction: column;
+                    position: absolute;
+                    top:20%;
+                    max-height: 0%;
+                    transition:max-height 1s;
+                    height: 50rem;
+                    right:0;
+                    left:0;
+                    text-align: center;
+                    background-color: $blue_punchy;
+                    z-index: 3;
+                }
+                a{
+                    width:100%;
+                    text-decoration: none;
+                    position: relative;
+                    color: #696871;
+                    text-transform: capitalize;
+                    font-size: 1.7rem;
+                    padding: 0 10px;
+                    @include tablet{
+                        color: $white;
+                        text-align: center;
+                    }
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        background-color: $blue_light2;
+                        height: 3px;
+                        width: 0;
+                        left: 0;
+                        bottom: -10px;
+                        transition: 0.3s;
+                    }
+                    &:hover::after {
+                        width: 100%;
+                    }
+                    &:hover {
+                        color: $blue_dark;
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }.navbar__login{
+            @extend %flex-center;
+            flex: 1;
+            width: 100%;
+            margin: auto;
+            button {
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+            }
+            @include phone{
+                transform: scale(0.75);
+            }
+            .login-logout{
+                @extend %flex-center-align;
+                .espace-perso{
+                    padding: 1rem;
+                    text-align: center;
+                    text-transform: capitalize;
+                    border-radius: 4px;
+                    color: $blue_punchy;
+                    font-size: 1.7rem;
+                    border : 2px solid $blue_punchy;
+                    text-decoration: none;
+                    transition : 0.5s;
+                    &:hover{
+                        color: $white;
+                        border: 2px solid $white;
+                        background-color: $blue_punchy;
+    
+                    }
+
+                }
+                .logout{
+                    color: $blue_punchy;
+                    padding: 1rem;
+                    font-size: 2.2rem;
+                    margin-left: 1rem;
+                    transition: 0.5s;
+                    &:hover{
+                        color:$white;
+                        background-color: $blue_punchy;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ---------------------- End Header ----------------------
+
+main {
+
+.error{
+    border : 1px solid red;
+    color : red;
+    background-color: pink;
+    border-radius: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 2rem 0;
+    font-size: 1.5rem;
+}
+.msgError{
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+}
+.flipped {
+    transform: rotateY(180deg);
+}
+.active {
+    color :rgb(255, 174, 0);
+}
+.btn-form{
+    background-color: $blue_punchy;
+    text-align: center;
+    padding: 1.5rem;
+    color: $white;
+    cursor: pointer;
+    border: none;
+    font-family: $main_font;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+}
+.btn-form-d {
+    background-color: $blue_punchy;
+    text-align: center;
+    padding: 1.5rem;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    font-family: $main_font;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    }
+.btn-lien{
+    width: 10rem;
+    height: 4rem;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(180deg, $blue_light, $blue_light2);
+    color: $white;
+    box-shadow: $box-shadow_grey_dark;
+    cursor: pointer;
+}
+.btn-lien-2{
+    width: 10rem;
+    height: 4rem;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(180deg, $blue_light, $blue_light2);
+    color: $white;
+    box-shadow: $box-shadow_dark2;
+    cursor: pointer;
+}
+.espace-perso{
+    width: 10rem;
+    height: 4rem;
+    border-radius: 4px;
+    color: $blue_dark2;
+    box-shadow: $box-shadow_grey_dark;
+    cursor: pointer;
+    border : 2px solid $blue_dark2;
+    text-decoration: none;
+
+}
+.form-input{
+    margin: 1rem 0;
+    padding: 1rem;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid $blue_punchy;
+    font-family: $main_font;
+    color:$blue_punchy;
+    &::placeholder{
+        color: $blue_punchy;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 3rem;
+    background: rgba(8, 34, 54, 0.8);
+    border-radius: 1rem;
+    input{
+    margin: 1rem 0;
+    padding: 1rem;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid $blue_punchy;
+    font-family: $main_font;
+    color:$blue_punchy;
+    &::placeholder{
+        color: $blue_punchy;
+    }
+    &:focus{
+        outline: none;
+    }
+    }
+}
+.h2{
+    @extend %flex-center-align;
+    font-family: $main_font;
+    font-size: 5rem;
+    color: $blue_dark2;
+    height: 20rem;
+    text-transform: capitalize;
+}
+.h3{
+    font-family: $main_font;
+    font-size: 3rem;
+    color: $blue_dark;
+    text-transform: capitalize;
+    text-align: center;
+}
+.card-options{
+    border: 0.5rem solid $blue_punchy;
+    border-radius: 2.5rem;
+    background-color: $white;
+    box-shadow: $box-shadow_grey_light;
+}
+.card-setup{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    backface-visibility: hidden;
+}
+.text{
+    background: linear-gradient(180deg, $blue_dark, $blue_dark2);
+    box-shadow: $box-shadow_dark;
+    padding: 4.5rem;
+    font-size: 1.5rem;
+    text-align: justify;
+    color: $white;
+}
+.card-formation{
+    background: linear-gradient(180deg, $blue_dark, $blue_dark2);
+    width: 30rem;
+    height: 30rem;
+    @extend %flex-around-align;
+    flex-direction: column;
+    h3{
+        font-size: 2rem;
+        color: $white;
+    }p{
+        text-align: justify;
+        font-size: 1rem;
+        padding: 2rem;
+        color: $white;
+    }
+    div{
+        @extend %flex-center-align;
+        a{
+            text-decoration: none;
+            color: $white;
+        }
+    }
+}
+
+// ---------------------- Start Page Accueil ----------------------
+
+    .container-accueil {
+
+        background-color: #e4e9ee;
+
+        #presentation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 2fr 1fr 1fr 0.5fr;
+            padding: 0 4rem;
+            @include tablet{
+                grid-template-columns: 1fr;
+                grid-template-rows: 0.75fr 0.5fr 0.25fr 1.5fr;
+                padding: 0 2rem;
+            }
+            @include phone{
+                grid-template-rows: 1fr 0.5fr 0.25fr 1.5fr;
+            }
+
+            #titre {
+                padding-top: 10rem;
+                overflow: hidden;
+                @include tablet{
+                    padding-top: 5rem;
+                }
+                h2 {
+                    opacity: 0;
+                    margin: 1.5rem;
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                    font-size: 7rem;
+                    text-align: left;
+                    color: $blue_dark;
+                    animation: appear 1.5s ease-out 1;
+                    animation-fill-mode: forwards;
+                    @include tablet{
+                        grid-column: 1/2;
+                        grid-row: 1/2;
+                    }
+                    @include phone{
+                        font-size: 3.5rem;
+
+                    }
+                    
+                }
+                @keyframes appear {
+                    0% {
+                        transform: translateX(-100%);
+                        opacity: 0;
+                    }
+
+                    100% {
+                        transform: translateX(0%);
+                        opacity: 1;
+                    }
+                }
+                & h2:nth-child(1) {
+                    animation-delay: 0.25s;
+
+                }
+
+                & h2:nth-child(2) {
+                    animation-delay: 0.50s;
+
+                }
+
+                & h2:nth-child(3) {
+                    animation-delay: 0.75s;
+
+                }
+            }
+            p {
+                grid-column: 1/2;
+                grid-row: 2/3;
+                margin: auto;
+                color: rgb(136, 131, 131);
+                font-size: 2.5rem;
+                display: flex;
+                align-items: center;
+                text-align: left;
+                padding-right: 2rem;
+                @include tablet{
+                    text-align: center;
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                @include phone{
+                    font-size: 1.6rem;
+                }
+            }
+    
+            #more {
+                grid-column: 1/2;
+                grid-row: 3/4;
+                display: flex;
+                margin: auto 20% auto auto;
+                justify-content: right;
+                @include tablet{
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                }
+                @include phone{
+                    margin: 0;
+                    justify-content: center;
+                    scale: 0.75;
+                }
+                button {
+                    width: 15rem;
+                    height: 5rem;
+                    border: none;
+                    font-size: 1.5rem;
+                    border-radius: 50px;
+                    background: linear-gradient(180deg, $blue_light, $blue_light2);
+                    color: $white;
+                    box-shadow: $box-shadow_grey_dark;
+                    cursor: pointer;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            img {
+                grid-column: 2/3;
+                grid-row: 1/5;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @include tablet{
+                    grid-column: 1/2;
+                    grid-row: 4/5;
+                }
+            }
+        }
+
+
+        #reason {
+            background: linear-gradient(180deg, $blue_dark, $blue_dark2);
+            width: 80%;
+            margin: 15rem auto;
+            box-shadow: $box-shadow_dark2;
+            @include phone {
+                margin: 10rem auto;
+                width:90%;
+            }
+
+            h2 {
+                font-size: 5rem;
+                text-align: center;
+                color: $white;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                @include phone {
+                    font-size: 5rem;
+                }    
+            }
+
+            p {
+                height: 100%;
+                width: 70%;
+                color: $white;
+                font-size: 1.7rem;
+                padding: 5rem;
+                margin: 0 auto;
+                text-align: justify;
+                @include tablet{
+                    padding: 2.5rem;
+                }
+                 @include phone {
+                     margin: 0;
+                     width:100%;
+                     font-size: 1.6rem;
+                 }
+            }
+        }
+
+        #detail {
+            h2 {
+                font-size: 6rem;
+                text-align: center;
+                color: $blue_light2;
+                margin: 10rem;
+                @include phone{
+                    font-size: 5rem;
+                    margin: 6rem auto;
+                    
+                }
+            }
+
+            .all_card {
+                @extend  %flex-around;
+                @include tablet{
+                    height: 110rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-direction: column;
+                }
+                
+                .card {
+                    width: 30rem;
+                    height: 30rem;
+                    perspective: 1000px;
+                    text-align: center;
+
+                    .card-inner {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        transform-style: preserve-3d;
+                        transition: transform 0.6s;
+                        cursor: pointer;
+
+                        .card-front {
+                            @extend %flex-center-align;
+                            background: linear-gradient(180deg, $blue_dark, $blue_dark2);
+                            p {
+                                color: $white;
+                                font-size: 15rem;
+                            }
+                        }
+                        .card-back {
+                            @extend %flex-center-align;
+                            transform: rotateY(180deg);
+                            background-color: $blue_punchy;
+
+                            p {
+                                color: $white;
+                                text-align: justify;
+                                padding: 2rem;
+                                font-size: 1.3rem;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        #allCom {
+            position: relative;
+            background: linear-gradient(180deg, $blue_dark, $blue_dark2);
+            @extend %flex-around;
+            padding: 6rem 0rem;
+            margin: 15rem 0rem 10rem 0rem;
+            width: 100%;
+            @include phone{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 3fr 0.5fr;
+                margin: 15rem 5rem 5rem 0rem;
+            }
+
+            h2 {
+                position: absolute;
+                font-size: 4rem;
+                text-align: center;
+                background-color: $white;
+                box-shadow: $box-shadow_dark;
+                padding: 2rem;
+                color: $blue_dark;
+                top: -9rem;
+                left: 3rem;
+            }
+
+            .prev-next {
+                width: 5.5rem;
+                height: 5.5rem;
+                border: none;
+                border-radius: 5rem;
+                background: $blue_punchy;
+                color: $white;
+                box-shadow: $box-shadow_dark2;
+                margin: auto 0;
+                font-size: 2rem;
+                cursor: pointer;
+                z-index: 3;
+            }
+
+            #prev{
+                @include phone{
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                    margin: auto;
+                }
+            }
+            #next{
+                @include phone{
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                    margin: auto;
+                }
+            }
+            .container{
+                width:40rem;
+                overflow: hidden;
+                @include tablet{
+                    max-width: 38rem;
+                }
+                @include phone{
+                    max-width: 35rem;
+                    grid-column: 1/3;
+                    grid-row: 1/2;
+                }
+                .slide{
+                    display: flex;
+                    width: auto;
+                    @include tablet{
+                        width: 38rem;
+                    }
+                    @include phone{
+                        width: 35rem;
+                    }
+                    .comClient {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-template-rows: 1fr 2fr 0.75fr;
+                        background-color: $white;
+                        border-radius: 10px;
+                        min-width: 40rem;
+                        height: 40rem;
+                        margin: 5rem 0rem;
+                        overflow: hidden;
+                        @include tablet{
+                            width: 38rem;
+                            background-color: red;
+                            }
+                        @include phone{
+                            margin: 4rem 0;
+                            max-width:35rem;
+
+                            }
+                        .nomClient {
+                            color: $blue_punchy;
+                            background-color: $grey_background;
+                            @extend %flex-center-align;
+                            grid-column: 1/2;
+                            grid-row: 1/2;
+                            margin: 0;
+                            font-size: 2.5rem;
+                            
+                        }
+                        .activite{
+                            grid-column: 2/3;
+                            grid-row: 1/2;
+                            background-color: $grey_background;
+                            @extend %flex-center-align;
+                            color: $blue_dark;
+                            font-size: 2rem
+
+                        }
+        
+                        p {
+                            @extend %flex-center-align;
+                            text-align: center;
+                            grid-column: 1/4;
+                            grid-row: 2/3;
+                            background-color: $blue_punchy;
+                            box-shadow: $box-shadow_grey_dark;
+                            color: $white;
+                            border-radius: 10px;
+                            font-size: 1.5rem;
+                            margin: 1rem;
+                        }
+        
+                        .date {
+                            background-color: $grey_background;
+                            color: grey;
+                            @extend %flex-center-align;
+                            grid-column: 3/4;
+                            grid-row: 1/2;
+                            font-size: 1.2rem;
+                        }
+        
+                        .notation {
+                            @extend %flex-center-align;
+                            grid-column: 3/4;
+                            grid-row: 3/4;
+                            .star{
+                                transform : scale(2);
+                                margin: 0rem 1rem;
+                            }
+                            .star-actived {
+                                color: rgb(255, 174, 0);
+                            }
+                        }
+                      
+        
+                    }
+                }
+
+             }
+        }
+    }
+
+// ---------------------- End Page Accueil ----------------------
+
+
+// ---------------------- Start Page Contact ----------------------
+
+    .container-contact{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 100vh;
+        background-image: url("../images/image-contact2.jpeg");
+        background-size: cover;
+        box-shadow:inset 0 0 0 2000px rgba(255, 255, 255, 0.6);
+        @include tablet{
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2 1fr);
+            height: 100%;
+            gap: 4rem;
+            padding: 6rem 0;
+        }
+        .slogan{
+            width: 100%;
+            grid-column: 1/2;
+            @extend %flex-around;
+            flex-direction: column;
+            p {
+            color: rgba(8, 34, 54, 0.8);
+            font-size: 6.5rem;
+            padding: 3rem 0 3rem 4rem ;
+            background-color: rgb(72, 180, 173, 0.8);
+            @include tablet{
+            grid-row: 1/2;
+            grid-column: 1/2;
+            }
+            @include phone{
+                font-size: 3rem;
+            }
+            }
+        }.container{
+            grid-column: 2/3;
+            @extend %flex-center-align;
+            form{
+                width: 70%;
+                @include phone{
+                    width:85%;
+                }
+            }
+            @include tablet{
+                grid-row: 2/3;
+                grid-column: 1/2;
+            }
+        }
+    }
+
+// ---------------------- End Page Contact ----------------------
+
+
+// ---------------------- Start Page A propos ----------------------
+
+    .container-a-propos{
+        background-color: #e4e9ee;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr repeat(4, 0.75fr);
+        height: fit-content;
+        padding: 0 4rem 6rem 4rem;
+        @include tablet{
+            grid-template-columns: 1fr;
+            grid-template-rows: 0.5fr repeat(2, 1fr);
+            gap:2rem;
+        }
+        @include phone{
+            grid-template-rows: 0.5fr 1fr 2fr;
+            padding: 0 2rem 6rem 2rem;
+        }
+            .titre{
+                grid-column: 2/3;
+                grid-row: 1/3;
+                text-align: right;
+                display: flex;
+                align-items: center;
+                @include tablet{
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                    text-align: center;
+                }
+                h2{
+                    text-transform: capitalize;
+                    font-size: 9rem;
+                    color: $blue_punchy;
+                    width: 80%;
+                @include tablet{
+                    width: 100%;
+                }
+                @include phone{
+                    font-size: 5rem;
+                }
+            }
+        }
+            .description{
+                grid-column: 2/3;
+                grid-row: 3/6;
+                display: flex;
+                justify-content: center;
+                @include tablet{
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                }
+                p{
+                    width: 70%;
+                    @include phone{
+                        width: 100%;
+                        padding: 2rem;
+                    }
+
+                }
+            
+            }
+            .img{
+                display: flex;
+                justify-content: center;
+                grid-column: 1/2;
+                grid-row: 2/5;
+                @include tablet{
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                img{
+                    width:100%;
+                    object-fit: cover;
+                }
+
+               
+            }
+            .bgd{
+                width: 70%;
+                grid-column: 1/2;
+                grid-row: 2/5;
+                background-color: $blue_punchy;
+                @include tablet{
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+                @include phone{
+                    width: 60%;
+                }
+            }
+
+    }
+
+// ---------------------- End Page A propos ----------------------
+
+// ---------------------- Start Page Formations ----------------------
+
+    .container-formations{
+        .type-client{
+            h2{
+                background: linear-gradient(180deg, $blue_dark, $blue_dark2);
+                @extend %flex-center-align;
+                font-size: 5rem;
+                color: $white;
+                height: 30rem;
+                @include tablet{
+                    font-size: 4rem;
+                    height: 25rem;
+                }
+                @include phone{
+                    font-size: 3rem;
+                    text-align: center;
+                    height: 20rem;
+                }
+            }
+        }
+        .client{
+            @extend %flex-around-align;
+            flex-direction: column;
+            display: grid;
+            grid-template-rows: 0.5fr 0.5fr 1fr;
+            grid-template-columns: 1fr;
+            margin-top: 4rem;
+            @include tablet{
+                height: 100rem;
+                grid-template-rows: 1fr;
+                grid-template-columns: 0.5fr 0.5fr 1fr;  
+            }
+
+
+            .img{
+                z-index: 2;
+                grid-row: 1/3;
+                grid-column: 1/2;
+                width: 100%;
+                margin-top: 4rem;
+                @extend %flex-around;
+                img{
+                    width: 20rem;
+                    height: 20rem;
+                    object-fit: cover;
+                    border-radius: 10rem;
+                    border: 1rem solid $blue_dark;
+                    box-shadow: $box-shadow_grey_dark;
+                    @include tablet{
+                        width: 15rem;
+                        height: 15rem;
+                    }
+                }
+                @include tablet{
+                    flex-direction: column;
+                    align-items: center;
+                    grid-row: 1/2;
+                    grid-column: 1/3;
+                    height: 100%;
+                    margin-top: 0;
+                }
+            }.content{
+                width:100%;
+                grid-row: 2/4;
+                grid-column: 1/2;
+                @extend %flex-around;
+                .text-client{
+                    @extend %flex-around-align;
+                    width: 30rem;
+                    height: 50rem;
+                    flex-direction: column;
+                    padding: 10rem 2rem 2rem 2rem;
+                    color: $white;
+                    background-color: $blue_punchy;
+                    @include tablet{
+                        padding: 2rem 2rem 2rem 10rem;
+                        margin-left: 1rem;
+                        width: 100%;
+                        height: 20rem;
+                    }
+                    @include phone{
+                        height: 30rem;
+                        padding: 0.5rem 2.5rem 0.5rem 8rem;
+
+                    }
+                    h3{
+                        text-align: center;
+                        font-size: 3rem;
+                        @include phone{
+                            font-size: 1.5rem;
+                        }
+                    }
+                    p{
+                        text-align: justify;
+                        font-size: 1rem;
+                    }
+                }
+                @include tablet{
+                    flex-direction: column;
+                    grid-row: 1/2;
+                    grid-column: 2/4;
+                    height: 100%;
+                }
+            }
+        }
+
+
+        .formations{
+            h2{
+                @extend %flex-center-align;
+                font-size: 5rem;
+                color: $blue_dark2;
+                height: 20rem;
+                text-transform: capitalize;
+                @include phone{
+                    font-size: 3rem;
+                }
+            }
+            .timeline-section{
+                height: 100%;
+                margin-bottom: 10rem;
+                .items{
+                    width: 100%;
+                    height: 100%;
+
+                    .item{
+                        padding:  0 10rem;
+                        width: 100%;
+                        position: relative;
+                        @include phone{
+                            padding-right: 2.5rem;
+                        }
+                        &:nth-child(-n+2)::before{
+                            content:'';
+                            position: absolute;
+                            width: 0.5rem;
+                            height: 100%;
+                            background-color: $blue_dark;
+                            left: 50%;
+                            @include tablet{
+                                left: 3rem;
+                            }
+
+                        }
+                        &:nth-child(odd){
+                            display: flex;
+                            justify-content: flex-start;
+                            @include tablet{
+                                justify-content: center;
+                            }
+                            @include phone{
+                                justify-content: right;
+                            }
+
+                        }
+                        &:nth-child(even){
+                            display: flex;
+                            justify-content: flex-end;
+                            @include tablet{
+                                justify-content: center;
+                            }
+                            @include phone{
+                                justify-content: right;
+                            }
+
+                        }
+                        .dot{
+                            width: 2.5rem;
+                            height: 2.5rem;
+                            background-color: $blue_punchy;
+                            border-radius: 50%;
+                            position: absolute;
+                            top:0;
+                            left: calc(50% - 1rem);
+                            @include tablet{
+                                left: 2rem;
+                            }
+                
+                        }
+                        .card-left{
+                                   border-radius:  2rem 0 2rem 2rem;
+                                   @include tablet{
+                                        margin-bottom: 3rem;
+                                        border-radius: 0 2rem 2rem 2rem;
+                                   }
+                                }
+                        .card-right{
+
+                                   border-radius: 0 2rem 2rem 2rem;
+                                   @include tablet{
+                                    margin-bottom: 3rem;
+                               }
+                        }
+                     }
+                }
+            }     
+            
+        }
+        
+    }
+// ---------------------- End Page Formations ----------------------
+
+
+// ---------------------- Start Page Perso ----------------------
+
+    .container-espace-perso{
+        h2{
+            @include tablet{
+                text-align: center;
+            }
+            @include phone{
+                font-size: 4rem;
+            }
+        }.options{
+            margin-bottom: 3rem;
+            
+            .section1{
+                @extend %flex-bt;
+                margin-bottom: 3rem;
+                width:80%;
+                margin: 3rem auto;
+                @include tablet{
+                    flex-direction: column;
+                    gap:3rem;
+                }
+                @include phone{
+                    width:95%;
+                }
+                .info{
+                    width:40%;
+                    @extend %flex-around-align;
+                    flex-direction: column;
+                    h3{
+                        margin: 3rem;
+                        @include phone{
+                            font-size: 2rem;
+                        }
+                    }
+                    form{
+                        margin: 1rem;
+                        width:80%;
+                    }
+                    @include tablet{
+                        width:100%;
+                    }
+                }
+                .document{
+                    width:40%;
+                    height:55rem;
+                    @extend %flex-around-align;
+                    flex-direction: column;
+                    
+                    h3{
+                        @include phone{
+                            font-size: 2rem;
+                        }
+                    }
+                    .link{
+                        @extend %flex-center;
+                        img{
+                            width: 5rem;
+                        }
+                        a{
+                            text-decoration: none;
+                            color: $blue_punchy;
+                            font-size: 2rem;
+                            text-transform: uppercase;
+                        }
+                    }
+                    @include tablet{
+                        width:100%;
+                    }
+                }
+            }.section2{
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                .rdv{
+                    width:80%;
+                    margin: auto;
+                    @include phone{
+                        width:95%;
+                    }
+                    form{
+                        min-height:80rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        .formation{
+                                width:50%;
+                                display: flex;
+                                margin: 3rem auto;
+                                border-radius: 15px;
+                                box-shadow: $box-shadow_grey_light;
+                                overflow: hidden;
+                                .input{
+                                    display: none;
+                                }.label{
+                                    width:50%;
+                                    text-align: center;
+                                    padding: 0.8rem 1.4rem;
+                                    font-size: 1.4rem;
+                                    color: $white;
+                                    cursor: pointer;
+                                    background-color: $blue_punchy;  
+                                }.input:checked + .label{
+                                    background-color: $blue_dark2;
+                                }
+                                @include tablet{
+                                    width: 80%;
+                                }
+                        }
+                        h3{
+                            margin: 3rem auto;
+                            @include phone{
+                                font-size: 2rem;
+                            }
+                        }
+                        .participant{
+                        @include tablet{
+                            margin: 0 auto;
+                        }
+                            .nombre{
+                                @extend %flex-center-align;
+                                width: 60%;
+                                margin: 3rem auto ;
+                                border-radius: 1rem;
+                                padding: 0 1rem;
+
+                                input{
+                                    background: rgba(8, 34, 54, 0.8);
+                                    text-align: center;
+                                    width: 7rem;
+                                    @include tablet{
+                                        width:50%;
+                                    }
+                                    @include phone{
+                                        width: 6rem;
+                                    }
+                                }
+                                button{
+                                    width: 4rem;
+                                    height: 4rem;
+                                    margin: 1rem;
+                                    cursor:pointer;
+                                    background-color: $blue_punchy;
+                                    border: 0;
+                                    border-radius: 0.4rem;
+                                    color: $white;
+                                }
+                
+                            }
+                            .identity{
+                                display: flex;
+                                justify-content: center;
+                                margin: 3rem auto;
+                                background: rgba(8, 34, 54, 0.8);
+                                border-radius: 1rem;
+                                padding: 0 1rem;
+                                @include tablet{
+                                    width:80%;
+                                    margin: 5rem auto;
+                                } 
+                                input{
+                                    @include tablet{
+                                        width:80%;
+                                    } 
+
+                                }
+
+                            }
+                        }
+                        .date{
+                            display: flex;
+                            justify-content: center;
+                            background: rgba(8, 34, 54, 0.8);
+                            border-radius: 1rem;
+                            padding: 0 1rem;
+                            margin: 3rem auto;
+                        }
+                        .datepicker{
+                            display: flex;
+                            justify-content: center;
+                            background: rgba(8, 34, 54, 0.8);
+                            border-radius: 1rem;
+                            padding: 0 1rem;
+                            margin: 3rem auto;
+
+                        }
+                        .submit{
+                            display: flex;
+                            justify-content: center;
+                            margin: 3rem auto;
+                        }
+                    }
+
+                }.message{
+                    width:80%;
+                    height:100%;
+                    margin: auto;
+                    @extend %flex-around-align;
+                    flex-direction: column;
+                    @include phone{
+                        width:95%;
+                    }
+                    h3{
+                        @include phone{
+                            font-size: 2rem;
+                        }
+                    }
+                    form{
+                        margin: 1rem 0rem;
+                        i{
+                            transform : scale(1.5);
+                            margin: 0rem 1rem;
+                            cursor: pointer;
+                        }
+                        input{
+                            display: none;
+                        }
+                        @include tablet{
+                            width:80%;
+                        }
+                    }
+                }.api{
+                    width:80%;
+                    height:100%;
+                    margin: auto;
+                    padding: 2rem;
+                    @extend %flex-around-align;
+                    flex-direction: column;
+                    @include phone{
+                        width:95%;
+                    }
+
+                }
+            }
+            
+        }
+    }
+
+// ---------------------- End Page Perso ----------------------
+
+// ---------------------- Start Page Mentions Légales ----------------------
+
+    .container-mentions-légales{
+
+        h2{     
+           @include phone{
+               font-size: 3rem;
+           }
+        }
+        .contenu{
+            @extend %flex-center;
+            p{
+                width: 80%;
+                margin-bottom: 10%;
+                @include phone{
+                    padding: 2rem;
+                    width: 85%;
+                }
+            }
+        }
+    }
+    
+// ---------------------- End Page Mentions Légales ----------------------
+
+// ---------------------- Start Page Evenement ----------------------
+
+    .container-evenement{
+
+        height: 0vh;
+        
+        h2{     
+           @include phone{
+               font-size: 3rem;
+           }
+        }
+        .contenu{
+            @extend %flex-center-align;
+            flex-direction: column;
+            p{
+                font-size: 3rem;
+                @include phone{
+                    padding: 2rem;
+                    width: 85%;
+                }
+            }
+        }
+    }
+    
+// ---------------------- End Page Evenement ----------------------
+    
+// ---------------------- Start Page Login ----------------------
+    .container-login{
+        @include phone{
+            margin: 2rem;
+        }
+        h2{
+            @include phone{
+                font-size: 4rem;
+            }
+        }
+        .login{
+            @extend %flex-around;
+            width: 100%;
+            margin-bottom: 10rem;
+            .form_participant{
+                min-width: 35%;
+                .remember{
+                    display: flex;
+                    color: $white;
+                    align-items: center;
+                    p{
+                        font-size: 1.5rem;
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+            .form_admin{
+                min-width: 35%;
+                #admin{
+                    display: flex;
+                    flex-direction: column;
+                }
+                .remember{
+                    display: flex;
+                    color: $white;
+                    align-items: center;
+                    p{
+                        font-size: 1.5rem;
+                        margin-left: 0.5rem;
+                    }
+                }
+                
+            }
+            
+            @include tablet{
+                flex-direction: column;
+                width:80%;
+                margin:  0 auto 10rem auto;
+            }
+            @include phone{
+
+                width: 100%;
+                margin:  0 0 10rem 0;
+
+            }
+            
+        }
+        
+   
+    }
+
+// ---------------------- End Page Login ----------------------
+    
+// ---------------------- Start Page Inscription ----------------------
+    .container-inscription{
+        margin:8rem;
+        @include phone{
+            margin:0.5rem;
+        }
+        h2{
+            @include phone{
+                font-size: 4rem;
+            }
+        }.type_client{
+                width:50%;
+                display: flex;
+                margin: auto;
+                border-radius: 15px;
+                box-shadow: $box-shadow_grey_light;
+                overflow: hidden;
+                .label{
+                    width:100%;
+                    text-align: center;
+                    padding: 0.8rem 1.4rem;
+                    font-size: 1.4rem;
+                    color: $white;
+                    background-color: $blue_punchy;
+                    cursor: pointer;
+                    a{
+                        text-decoration: none;
+                        color: $white;
+                    }
+                }
+                .label-checked{
+                    background-color: $blue_dark;
+                }
+                @include tablet{
+                    width:80%;
+                }
+            }
+            #content_form{
+                width: 40%;
+                margin: 10rem auto;
+                @include tablet{
+                    width: 80%;
+                }
+            }
+            form{
+                width:100%;
+    }
+}               
+
+// ---------------------- End Page Inscription ----------------------
+
+}
+
+// ---------------------- Start Footer ----------------------
+
+
+footer {
+
+    height: 20vh;
+
+    .footer{  
+        background-color: $blue_dark;
+        @extend %flex-around-align;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        height: 100%;
+        
+        .footer__ml {
+            a {
+                font-size: 2rem;
+                text-decoration: none;
+                color: $white;
+            }
+        }
+        
+        .footer__copyright {
+            font-size: 2rem;
+            color: $white;
+        }
+    
+        .footer__reseaux {
+            width: 100px;
+            @extend %flex-around;
+            a {
+                font-size: 2rem;
+                color: $white;
+            }
+        }
+        @include phone{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+}
+
+
+// ---------------------- End Footer ----------------------

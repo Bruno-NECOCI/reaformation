@@ -1,0 +1,16 @@
+{
+  "name": "reaformation",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass --watch ./public/style/scss/main.scss:./public/style/style.css",
+    "prefix": "postcss ./public/style/style.css --use autoprefixer -d ./public/style/"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "description": "",
+  "dependencies": {
+    "sass": "^1.49.9"
+  }
+}
